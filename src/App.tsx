@@ -117,9 +117,9 @@ const Game = () => {
               direction,
               speed:
                 keys.current['ArrowLeft'] ||
-                keys.current['ArrowRight'] ||
-                keys.current['ArrowUp'] ||
-                keys.current['ArrowDown']
+                  keys.current['ArrowRight'] ||
+                  keys.current['ArrowUp'] ||
+                  keys.current['ArrowDown']
                   ? maxSpeed
                   : 0,
               x: Math.max(
@@ -241,99 +241,109 @@ const Game = () => {
 
   return (
     <div style={{ textAlign: 'center', backgroundColor: 'brown', paddingBottom: '20px' }}>
-      <h1 style={{ color: 'white', margin: '0' }}>React Game</h1>
-      <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '10px' }}>
-        <div style={{ marginRight: '20px', color: 'white' }}>
-          <strong>Current Score:</strong> {score}
-        </div>
-        <div style={{ color: 'white' }}>
-          <strong>High Score:</strong> {highScore}
-        </div>
-      </div>
+      <h1 style={{ color: 'white', margin: '0' }}>Two Poo Debieux</h1>
       {!gameStarted && (
-        <button style={{ fontSize: '18px', padding: '10px' }} onClick={() => setGameStarted(true)}>
-          Play Now
-        </button>
+        <>
+          <p style={{ color: 'white' }}>
+            Embark on a journey with our IBS-ridden hero, Two Poo Debieux, as he navigates the treacherous terrain of intestinal chaos.
+            Armed with the uncanny ability to summon uncontrollable bouts of diarrhea, Two Poo must collect toilet rolls to maintain his dignity 
+            and avoid being pelted by explosive shit attacks. Can Two Poo Debieux conquer the shitstorm and avoid craptastrophe?
+          </p>
+          <button style={{ fontSize: '18px', padding: '10px' }} onClick={() => setGameStarted(true)}>
+            Play Now
+          </button>
+        </>
       )}
       {gameStarted && (
-        <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
-          <div
-            style={{
-              position: 'relative',
-              width: `${squareSize}px`,
-              height: `${squareSize}px`,
-              border: '1px solid black',
-              backgroundColor: 'green',
-            }}
-          >
+        <>
+          <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '10px' }}>
+            <div style={{ marginRight: '20px', color: 'white' }}>
+              <strong>Current Score:</strong> {score}
+            </div>
+            <div style={{ color: 'white' }}>
+              <strong>High Score:</strong> {highScore}
+            </div>
+          </div>
+          <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
             <div
               style={{
-                position: 'absolute',
-                left: `${character.x}px`,
-                top: `${character.y}px`,
-                fontSize: '20px',
+                position: 'relative',
+                width: `${squareSize}px`,
+                height: `${squareSize}px`,
+                border: '1px solid black',
+                backgroundColor: 'green',
               }}
             >
-              👨‍🦱
-            </div>
-            <div
-              style={{
-                position: 'absolute',
-                left: `${target.x}px`,
-                top: `${target.y}px`,
-                fontSize: '20px',
-              }}
-            >
-              🧻
-            </div>
-            {enemies.map((enemy, index) => (
               <div
-                key={index}
                 style={{
                   position: 'absolute',
-                  left: `${enemy.x}px`,
-                  top: `${enemy.y}px`,
+                  left: `${character.x}px`,
+                  top: `${character.y}px`,
                   fontSize: '20px',
                 }}
               >
-                💩
+                👨‍🦱
               </div>
-            ))}
-            {gameOver.current && (
               <div
                 style={{
                   position: 'absolute',
-                  top: '50%',
-                  left: '50%',
-                  transform: 'translate(-50%, -50%)',
-                  fontSize: '30px',
-                  textAlign: 'center',
-                  backgroundColor: 'brown',
-                  padding: '20px',
-                  borderRadius: '10px',
-                  color: 'white',
+                  left: `${target.x}px`,
+                  top: `${target.y}px`,
+                  fontSize: '20px',
                 }}
               >
-                <p>{getGameOverMessage()}</p>
-                <p>Your Score: {score}</p>
-                <p>High Score: {highScore}</p>
-                <button
-                  style={{
-                    fontSize: '18px',
-                    padding: '10px',
-                    backgroundColor: 'white',
-                    color: 'brown',
-                    border: 'none',
-                    cursor: 'pointer',
-                  }}
-                  onClick={restartGame}
-                >
-                  Restart
-                </button>
+                🧻
               </div>
-            )}
+              {enemies.map((enemy, index) => (
+                <div
+                  key={index}
+                  style={{
+                    position: 'absolute',
+                    left: `${enemy.x}px`,
+                    top: `${enemy.y}px`,
+                    fontSize: '20px',
+                  }}
+                >
+                  💩
+                </div>
+              ))}
+              {gameOver.current && (
+                <div
+                  style={{
+                    position: 'absolute',
+                    top: '50%',
+                    left: '50%',
+                    transform: 'translate(-50%, -50%)',
+                    fontSize: '30px',
+                    textAlign: 'center',
+                    backgroundColor: 'brown',
+                    padding: '20px',
+                    borderRadius: '10px',
+                    color: 'white',
+                  }}
+                >
+                  <strong><p>{getGameOverMessage()}</p></strong>
+                  <p>Your Score: {score}</p>
+                  <p>High Score: {highScore}</p>
+                  <button
+                    style={{
+                      fontSize: '18px',
+                      padding: '10px',
+                      backgroundColor: 'white',
+                      color: 'brown',
+                      border: 'none',
+                      cursor: 'pointer',
+                    }}
+                    onClick={restartGame}
+                  >
+                    Restart
+                  </button>
+                </div>
+              )}
+            </div>
           </div>
-        </div>
+
+        </>
       )}
     </div>
   );
